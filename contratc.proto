@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+
+package Temperature;
+option go_package = "./gen";
+
+// Temperature @Id == temperature
+message Temperature {
+  string Id = 1;
+  google.protobuf.Timestamp Data = 2;
+  float temp = 3;
+}
+
+message nil {}
+message NewTemperatureRequest { Temperature temp = 1; }
+message NewTemperatureResponse { repeated string message = 1; }
+message GetLast5tempResponse {  string temps = 1; };
+
+service TemperatureService {
+  rpc NewTemperature(NewTemperatureRequest) returns (NewTemperatureResponse) {
+    option (google.api.http) = {
+      post : "/temperature"
+      body : "*"
+    };
+  };
+  rpc GetLast5Temp(nil) returns (GetLast5tempResponse) {
+    option (google.api.http) = {
+      get : "/temperature"
+    };
+  };
+}
