@@ -4,7 +4,7 @@ import (
 	context "context"
 	"log"
 
-	"github.com/lffspaniol/generic_api/gen"
+	"github.com/lffspaniol/generic_api/gen/pb-go/gen"
 	"google.golang.org/grpc"
 )
 

@@ -1,0 +1,146 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "pkg/contrato.proto",
+    "version": "version not set"
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/temperature": {
+      "get": {
+        "operationId": "TemperatureService_GetLast5Temp",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/TemperatureGetLast5tempResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "tags": [
+          "TemperatureService"
+        ]
+      },
+      "post": {
+        "operationId": "TemperatureService_NewTemperature",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/TemperatureNewTemperatureResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TemperatureNewTemperatureRequest"
+            }
+          }
+        ],
+        "tags": [
+          "TemperatureService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "TemperatureGetLast5tempResponse": {
+      "type": "object",
+      "properties": {
+        "temps": {
+          "type": "string"
+        }
+      }
+    },
+    "TemperatureNewTemperatureRequest": {
+      "type": "object",
+      "properties": {
+        "temp": {
+          "$ref": "#/definitions/TemperatureTemperature"
+        }
+      }
+    },
+    "TemperatureNewTemperatureResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "TemperatureTemperature": {
+      "type": "object",
+      "properties": {
+        "Id": {
+          "type": "string"
+        },
+        "Data": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "temp": {
+          "type": "number",
+          "format": "float"
+        }
+      },
+      "title": "Temperature @Id == temperature"
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "type_url": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "runtimeError": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string"
+        },
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    }
+  }
+}

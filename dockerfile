@@ -9,5 +9,6 @@ RUN go mod download
 RUN go install 
 
 EXPOSE 50051
+EXPOSE 8080
 
 CMD ["generic_api"]

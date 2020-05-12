@@ -1,9 +1,15 @@
 
 
+
 _gengo:
-	@docker run -v `pwd`:/defs namely/protoc-all  -i .  -f  ./pkg/contrato.proto -l go -o ./pkg/
-	@docker run -v `pwd`:/defs namely/gen-grpc-gateway -f ./pkg/contrato.proto -s TemperatureService -o ./grpc-gateway
+	@echo $(USER)
+	@docker run -v `pwd`:/defs namely/protoc-all  -i . --with-gateway 	  -f  ./pkg/contrato.proto -l go 
+	@sudo chown -R $(USER):$(USER) gen
 gen: _gengo
+
+
+setup:
+	docker build -t grpc-gateway ./grpc-gateway
 
 
 cli:

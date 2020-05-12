@@ -8,7 +8,7 @@ import (
 	"net/http"
 
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
-	"github.com/lffspaniol/generic_api/internal/gen"
+	"github.com/lffspaniol/generic_api/gen/pb-go/gen"
 	"github.com/lffspaniol/generic_api/internal/temperature"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
