@@ -12,7 +12,7 @@ setup:
 	docker build -t generic_api .
 
 run:
-	docker run generic_api
+	docker run -p 8080:8080 -p 50051:50051 generic_api
 
 
 cli:
