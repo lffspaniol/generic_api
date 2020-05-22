@@ -6,17 +6,15 @@ import "google/protobuf/timestamp.proto";
 package Temperature;
 option go_package = "./gen";
 
-// Temperature @Id == temperature
 message Temperature {
-  string Id = 1;
-  google.protobuf.Timestamp Data = 2;
-  float temp = 3;
+  google.protobuf.Timestamp Data = 1;
+  float temp = 2;
 }
 
 message nil {}
-message NewTemperatureRequest { Temperature temp = 1; }
-message NewTemperatureResponse { repeated string message = 1; }
-message GetLast5tempResponse {  string temps = 1; };
+message NewTemperatureRequest { float temp = 1; }
+message NewTemperatureResponse { string message = 1; }
+message GetLast5tempResponse { repeated Temperature temps = 1; };
 
 service TemperatureService {
   rpc NewTemperature(NewTemperatureRequest) returns (NewTemperatureResponse) {

@@ -69,7 +69,10 @@
       "type": "object",
       "properties": {
         "temps": {
-          "type": "string"
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TemperatureTemperature"
+          }
         }
       }
     },
@@ -77,7 +80,8 @@
       "type": "object",
       "properties": {
         "temp": {
-          "$ref": "#/definitions/TemperatureTemperature"
+          "type": "number",
+          "format": "float"
         }
       }
     },
@@ -85,19 +89,13 @@
       "type": "object",
       "properties": {
         "message": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
+          "type": "string"
         }
       }
     },
     "TemperatureTemperature": {
       "type": "object",
       "properties": {
-        "Id": {
-          "type": "string"
-        },
         "Data": {
           "type": "string",
           "format": "date-time"
@@ -106,8 +104,7 @@
           "type": "number",
           "format": "float"
         }
-      },
-      "title": "Temperature @Id == temperature"
+      }
     },
     "protobufAny": {
       "type": "object",
