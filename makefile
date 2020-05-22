@@ -9,7 +9,10 @@ gen: _gengo
 
 
 setup:
-	docker build -t grpc-gateway ./grpc-gateway
+	docker build -t generic_api .
+
+run:
+	docker run generic_api
 
 
 cli:
